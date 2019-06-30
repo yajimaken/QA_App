@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "95541654872",
+    "firebase_url": "https://qaapp-30239.firebaseio.com",
+    "project_id": "qaapp-30239",
+    "storage_bucket": "qaapp-30239.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95541654872:android:1be31e50f32114b9",
+        "android_client_info": {
+          "package_name": "jp.techacademy.ken.yajima.qa_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95541654872-77c02r17g4bflrgitcl4j6lo79ngtgvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPKDJ4b9va4hWLZJt42pzlwj0m1QKq4eQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95541654872-77c02r17g4bflrgitcl4j6lo79ngtgvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
