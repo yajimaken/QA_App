@@ -17,7 +17,8 @@ import java.util.HashMap
 
 class AnswerSendActivity : AppCompatActivity(), View.OnClickListener, DatabaseReference.CompletionListener {
 
-    private lateinit var mQuestion: Question
+    private  var mQuestion: Question?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +48,10 @@ class AnswerSendActivity : AppCompatActivity(), View.OnClickListener, DatabaseRe
         im.hideSoftInputFromWindow(v.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
 
         val dataBaseReference = FirebaseDatabase.getInstance().reference
-        val answerRef = dataBaseReference.child(ContentsPATH).child(mQuestion.genre.toString()).child(mQuestion.questionUid).child(AnswersPATH)
-
+        var answerRef = null
+        if(mQuestion != null) {
+             answerRef = dataBaseReference.child(ContentsPATH).child(mQuestion!!.genre.toString()).child(mQuestion!!.questionUid).child(AnswersPATH)
+        }
         val data = HashMap<String, String>()
 
         data["uid"] = FirebaseAuth.getInstance().currentUser!!.uid
