@@ -15,13 +15,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_question_detail.*
+import kotlinx.android.synthetic.main.list_question_detail.*
 
 import java.util.HashMap
 
-class QuestionDetailActivity : AppCompatActivity() {
+class QuestionDetailActivity : AppCompatActivity(){
 
     private lateinit var mQuestion: Question
-    private lateinit var mAdapter: QuestionDetailListAdapter
+    private lateinit var mAdapter: QuestionDetailAdapter
     private lateinit var mAnswerRef: DatabaseReference
 
     private val mEventListener = object : ChildEventListener {
@@ -31,7 +32,6 @@ class QuestionDetailActivity : AppCompatActivity() {
             val answerUid = dataSnapshot.key ?: ""
 
             for (answer in mQuestion.answers) {
-                // 同じAnswerUidのものが存在しているときは何もしない
                 if (answerUid == answer.answerUid) {
                     return
                 }
@@ -67,30 +67,25 @@ class QuestionDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_detail)
 
-        // 渡ってきたQuestionのオブジェクトを保持する
+
         val extras = intent.extras
         mQuestion = extras.get("question") as Question
 
         title = mQuestion.title
 
-        // ListViewの準備
-        mAdapter = QuestionDetailListAdapter(this, mQuestion)
+        mAdapter = QuestionDetailAdapter(this, mQuestion)
         listView.adapter = mAdapter
         mAdapter.notifyDataSetChanged()
 
         fab.setOnClickListener {
-            // ログイン済みのユーザーを取得する
             val user = FirebaseAuth.getInstance().currentUser
 
             if (user == null) {
-                // ログインしていなければログイン画面に遷移させる
                 val intent = Intent(applicationContext, LoginActivity::class.java)
                 startActivity(intent)
             } else {
-                // Questionを渡して回答作成画面を起動する
-                // TODO:
-                val intent = Intent(applicationContext,AnswerSendActivity::class.java)
-                intent.putExtra("questions",mQuestion)
+                val intent = Intent(applicationContext, AnswerSendActivity::class.java)
+                intent.putExtra("question", mQuestion)
                 startActivity(intent)
             }
         }
@@ -99,4 +94,6 @@ class QuestionDetailActivity : AppCompatActivity() {
         mAnswerRef = dataBaseReference.child(ContentsPATH).child(mQuestion.genre.toString()).child(mQuestion.questionUid).child(AnswersPATH)
         mAnswerRef.addChildEventListener(mEventListener)
     }
+
+
 }

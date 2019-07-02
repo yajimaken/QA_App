@@ -20,4 +20,3 @@
             android:layout_below="@+id/bodyTextView"
             android:layout_alignParentEnd="true"/>
 </RelativeLayout>
-

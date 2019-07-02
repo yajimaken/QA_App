@@ -11,12 +11,12 @@
               tools:context=".SettingActivity">
     <EditText
             android:id="@+id/nameText"
+            android:hint="表示名"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ID"/>
+            android:layout_height="wrap_content"/>
     <Button
             android:id="@+id/changeButton"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/custom_button"
             android:text="変更"
             android:textColor="@color/colorButtonText"
@@ -26,11 +26,8 @@
             android:id="@+id/logoutButton"
             android:layout_marginTop="4dp"
             android:background="@drawable/custom_button"
-            android:text="Logout"
             android:textColor="@color/colorButtonText"
+            android:text="ログアウト"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 </LinearLayout>
-
-
-

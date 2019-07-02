@@ -16,11 +16,13 @@
         </activity>
         <activity android:name=".QuestionDetailActivity">
         </activity>
-        <activity android:name=".QuestionSendActivity">
+        <activity
+                android:name=".QuestionSendActivity"
+                android:label="@string/title_activity_question_send"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".SettingActivity">
         </activity>
-
         <activity android:name=".LoginActivity">
         </activity>
         <activity

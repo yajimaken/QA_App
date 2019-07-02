@@ -10,7 +10,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-class QuestionDetailListAdapter(context: Context, private val mQustion: Question) : BaseAdapter() {
+class QuestionDetailAdapter(context: Context, private val mQustion: Question) : BaseAdapter() {
     companion object {
         private val TYPE_QUESTION = 0
         private val TYPE_ANSWER = 1
