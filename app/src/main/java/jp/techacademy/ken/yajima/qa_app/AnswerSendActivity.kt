@@ -27,7 +27,7 @@ class AnswerSendActivity : AppCompatActivity(), View.OnClickListener, DatabaseRe
         // 渡ってきたQuestionのオブジェクトを保持する
         val extras = intent.extras
         mQuestion = extras.get("question") as Question
-
+        
         sendButton.setOnClickListener(this)
     }
 

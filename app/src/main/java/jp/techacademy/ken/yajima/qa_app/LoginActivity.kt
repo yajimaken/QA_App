@@ -60,7 +60,6 @@ class LoginActivity : AppCompatActivity() {
                     val data=HashMap<String,String>()
                     data["name"]=name
                     userRef.setValue(data)
-
                     saveName(name)
                 }else{
                     userRef.addListenerForSingleValueEvent(object :ValueEventListener{

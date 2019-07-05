@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.database.FirebaseDatabase
+import java.lang.ref.Reference
 
-class QuestionDetailAdapter(context: Context, private val mQustion: Question) : BaseAdapter() {
+class QuestionDetailAdapter(context: Context, private val mQustion: Question) : BaseAdapter(), View.OnClickListener {
     companion object {
         private val TYPE_QUESTION = 0
         private val TYPE_ANSWER = 1
@@ -85,5 +87,9 @@ class QuestionDetailAdapter(context: Context, private val mQustion: Question) : 
         }
 
         return convertView
+    }
+
+    override fun onClick(v: View) {
+        
     }
 }

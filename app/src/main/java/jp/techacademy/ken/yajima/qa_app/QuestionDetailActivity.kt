@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.list_question_detail.*
 
 import java.util.HashMap
 
-class QuestionDetailActivity : AppCompatActivity(){
+class QuestionDetailActivity : AppCompatActivity(),View.OnClickListener{
 
     private lateinit var mQuestion: Question
     private lateinit var mAdapter: QuestionDetailAdapter
@@ -88,12 +88,27 @@ class QuestionDetailActivity : AppCompatActivity(){
                 intent.putExtra("question", mQuestion)
                 startActivity(intent)
             }
+
         }
+
 
         val dataBaseReference = FirebaseDatabase.getInstance().reference
         mAnswerRef = dataBaseReference.child(ContentsPATH).child(mQuestion.genre.toString()).child(mQuestion.questionUid).child(AnswersPATH)
         mAnswerRef.addChildEventListener(mEventListener)
+
     }
 
+    override fun onClick(v: View) {
+        if(v==favorite_button){
+            val databaseReference=FirebaseDatabase.getInstance().reference
+            mAnswerRef = databaseReference.child(UsersPATH).child(FavoriteQ)
+            val extras = intent.extras
+            mQuestion = extras.get("question") as Question
 
+            val favorite=mQuestion.questionUid
+            val data=HashMap<String,String>()
+            data["favorite"]=favorite
+            mAnswerRef.push().setValue(data,this)
+        }
+    }
 }

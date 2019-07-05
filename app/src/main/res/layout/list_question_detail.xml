@@ -28,13 +28,14 @@
             android:text="Small Text"
             android:id="@+id/nameTextView"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true" android:layout_marginEnd="5dp"
+            android:layout_marginBottom="253dp"/>
     <Button
             android:id="@+id/favorite_button"
             android:text="お気に入りに追加"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true" android:layout_marginTop="683dp" android:layout_marginEnd="275dp"/>
+            android:layout_alignParentTop="true" android:layout_marginTop="442dp" android:layout_marginEnd="275dp"/>
 
 </RelativeLayout>
