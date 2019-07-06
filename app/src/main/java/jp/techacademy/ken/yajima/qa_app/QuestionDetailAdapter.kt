@@ -16,6 +16,7 @@ class QuestionDetailAdapter(context: Context, private val mQustion: Question) : 
     companion object {
         private val TYPE_QUESTION = 0
         private val TYPE_ANSWER = 1
+        private var mGenre=0
     }
 
     private var mLayoutInflater: LayoutInflater? = null
@@ -90,6 +91,6 @@ class QuestionDetailAdapter(context: Context, private val mQustion: Question) : 
     }
 
     override fun onClick(v: View) {
-        
+
     }
 }
