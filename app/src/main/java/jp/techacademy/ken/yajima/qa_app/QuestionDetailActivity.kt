@@ -24,6 +24,7 @@ class QuestionDetailActivity : AppCompatActivity(),View.OnClickListener{
     private lateinit var mQuestion: Question
     private lateinit var mAdapter: QuestionDetailAdapter
     private lateinit var mAnswerRef: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
 
     private val mEventListener = object : ChildEventListener {
         override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
@@ -96,12 +97,25 @@ class QuestionDetailActivity : AppCompatActivity(),View.OnClickListener{
         mAnswerRef = dataBaseReference.child(ContentsPATH).child(mQuestion.genre.toString()).child(mQuestion.questionUid).child(AnswersPATH)
         mAnswerRef.addChildEventListener(mEventListener)
 
+        favorite_button.setOnClickListener {
+            val databaseReference=FirebaseDatabase.getInstance().reference
+            val user=mAuth.currentUser
+            mAnswerRef = databaseReference.child(UsersPATH).child(user!!.uid).child(FavoriteQ).child(mQuestion.questionUid).child(mQuestion.genre.toString())
+            val extras = intent.extras
+            mQuestion = extras.get("question") as Question
+
+            val favorite=mQuestion.questionUid
+            val data=HashMap<String,String>()
+            data["favorite"]=favorite
+            mAnswerRef.push().setValue(data,this)
+        }
     }
 
     override fun onClick(v: View) {
         if(v==favorite_button){
             val databaseReference=FirebaseDatabase.getInstance().reference
-            mAnswerRef = databaseReference.child(UsersPATH).child(FavoriteQ)
+            val user=mAuth.currentUser
+            mAnswerRef = databaseReference.child(UsersPATH).child(user!!.uid).child(FavoriteQ)
             val extras = intent.extras
             mQuestion = extras.get("question") as Question
 
